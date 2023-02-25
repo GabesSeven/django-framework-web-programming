@@ -1,0 +1,145 @@
+django-admin startproject <name-folder-project> <local-folder-project>
+django-admin startproject django1 /Project
+
+
+django-admin startapp <name-app>
+django-admin startapp core
+## in django1/settings.py, add in INSTALLED_APP[ ..., 'core']
+## in django1/settings.py, add in TEMPLATES[ ..., DIRS:['template'], ...]
+
+python manage.py runserver
+## in django1/settings.py, change DEBUG = True to DEBUG = False
+## in django1/settings.py, change ALLOWED_HOSTS = [] to ALLOWED_HOSTS = ['*']
+## in django1/settings.py, change LANGUAGE_CODE = 'en-us' to LANGUAGE_CODE = 'pt-br'
+
+## in core/views.py add function 'index' and 'contato'
+
+## not recommended, all routes added in the application:
+## in django1/urls.py add import: from core.views import index, contato
+## in django1/urls.py add in urlpatterns = [ ..., path('', index), path('contato', contato)]
+
+## recommended, routes added in the project and a general route for application:
+## in django1/urls.py add import: from django.urls import path, include
+## in django1/urls.py add in urlpatterns = [ ...,     path('', include('core.urls'))]
+## create new file core/urls.py
+## in core/urls.py add import: from django.urls import path
+## in core/urls.py add import: from .views  import index, contato
+## in core/urls.py add in urlpatterns = [ path('', index), path('contato', contato)]
+
+## create new folder core/templates
+## create new file core/templates/index.html
+## create new file core/templates/contato.html
+
+## create class 'Produto' in core/models.py, this will be the database
+python manage.py makemigrations
+python manage.py migrate
+## create class 'Cliente' in core/models.py, this will be the database
+python manage.py makemigrations
+python manage.py migrate
+
+python manage.py createsuperuser
+## in core/admin.py add import: from .models import Produto, Cliente
+## in core/admin.py add: admin.site.register(Produto)
+## in core/admin.py add: admin.site.register(Cliente)
+## in core/models.py add in class Produto and Cliente the function __str__(self)
+## create class 'ProdutoAdmin' in core/admin.py, this will show 'nome', 'preco' and 'estoque' about 'Produto'
+## create class 'ClienteAdmin' in core/admin.py, this will show 'nome', 'sobrenome' and 'email' about 'Cliente'
+
+python manage.py
+python manage.py help makemigrations
+python manage.py help runserver
+python manage.py help createsuperuser
+
+python manage.py shell
+from core.views import index
+dir(index)
+from core.models import Produto
+dir(Produto)
+produto = Produto(nome='Atari 2600', preco='199.67', estoque=100)
+produto.save()
+produto.id
+produto.pk
+
+from core.models import Cliente
+dir(Cliente)
+cliente = Cliente(nome='Jana', sobrenome='da Silva', email='dasilva@bol.com.br')
+cliente.save()
+cliente.id
+cliente.pk
+cliente
+print(cliente)
+cliente.nome = 'José'
+cliente.save()
+cliente.pk
+dir(cliente)
+cliente.delete()
+
+## in core/views.py, in function 'index' add: print(dir(request))
+## in core/views.py, in function 'index' add: print(f'Método: {request.method}')
+## in core/views.py, in function 'index' add: print(f"Headers: {request.headers['User-Agent']}")
+## in core/views.py, in function 'index' add: print(f'User: {request.user}')
+## in core/views.py, in function 'index' add: print(f'Email User: {request.user.email}')
+## in core/views.py, in code: if str(request.user) == 'AnonymousUser'
+## in templates/index.html, add code span
+
+
+python manage.py shell
+from core.models import Produto
+dir(Produto)
+produtos = Produto.objects.all()
+produto
+for produto in produtos:
+  print(produto)
+Produto.objects.count()
+Produto.objects.first()
+Produto.objects.last()
+Produto.objects.filter(id=2)
+
+## in core/views.py add import: from .models import Produto
+## in core/views.py, in function 'index' add: produtos = Produto.objects.all()
+## in core/templates/index.html, add code for
+## in core/templates/index.html, add code a (link)
+## alter core/view.py (add function produto), core/urls.py (add path)
+## create new file core/templates/produto.html
+
+## create new folder core/statics
+## create new folder core/statics/css
+## create new folder core/statics/js
+## create new folder core/statics/images
+## in django1/settings.py, STATIC_URL = '/static/' used during development
+## in django1/settings.py, DEBUG = True used during development development
+## in django1/settings.py add import: import os
+## in django1/settings.py, add STATIC_ROOT = os.path.join[BASE_DIR, 'staticfiles'] used during development production
+## in django1/settings.py, DEBUG = False used during development production
+
+## create new file core/statics/css/estilos.css
+## create new file core/statics/js/script.js
+## alter core/templates/index.html add: {% load static %}, estilo.css, image django.png, button and js code
+python manage.py collectstatic
+
+## solving problems so as not to display non-existent parameters
+## in core/views.py add import: from django.shortcuts import get_object_or_404
+## in core/views.py, in function 'produto' add code: prod = get_object_or_404(Produto, id=pk)
+## in django1/urls.py add import: from django.conf.urls import handler404
+## in django1/urls.py add import: from core import views
+## in django1/urls.py add code: handler404 = views.error404
+## in core/views.py, add function 'error404'
+## in django1/settings.py, alter to DEBUG = False
+## same thing for error 500
+
+## in core/views.py add import: from django.http import HttpResponse
+## in core/views.py add import: from django.template import loader
+## in core/views.py, alter function error404
+## same thing for error 500
+## create new file core/template/404.html
+## create new file core/template/500.html
+
+## when you close the admin page go back to index.html
+## in django1/settings.py, add LOGOUT_REDIRECT_URL = 'index'
+
+## whitenoise: configure static files
+## gunicorn: python server
+pip install whitenoise gunicorn
+## in django1/settings.py, add
+  MIDDLEWARE = [ 'django.middleware.security.SecurityMiddleware',
+                  whitenoise.middleware. WhiteNoiseMiddleware, ... ]
