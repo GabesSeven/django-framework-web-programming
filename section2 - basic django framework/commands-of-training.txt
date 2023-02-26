@@ -149,3 +149,8 @@ pip install whitenoise gunicorn
 ## https://dashboard.heroku.com/apps
 ## https://devcenter.heroku.com/articles/heroku-cli
 ## https://medium.com/@ephantus/installing-heroku-cli-on-kali-linux-bf0913075815
+## create new file runtime.txt
+## create new file Procfile
+pip freeze > requirements.txt
+heroku login
+heroku create django-gf --buildpack heroku/python
