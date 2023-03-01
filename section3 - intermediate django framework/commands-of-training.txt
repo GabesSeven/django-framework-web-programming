@@ -1,0 +1,71 @@
+pip install django whitenoise gunicorn django-bootstrap4 PyMySQL django-stdimage
+pip freeze > requirements.txt
+django-admin startproject django2 .
+django-admin startapp core
+
+## in django2/settings.py, change ALLOWED_HOSTS = [] to ALLOWED_HOSTS = ['*']
+## in django2/settings.py, add in INSTALLED_APP[ ..., 'core', 'bootstrap4', 'stdimage',]
+## in django2/settings.py, add
+  MIDDLEWARE = [ 'django.middleware.security.SecurityMiddleware',
+                  whitenoise.m*******iddleware.WhiteNoiseMiddleware, ... ]
+## in django2/settings.py, add in TEMPLATES[ ..., DIRS:['templates'], ...]
+## in django2/settings.py alter DATABASES = { 'default': { 'ENGINE': 'django.db.backends.mysql', 'NAME': 'django2', 'USER': 'user', # 'PASSWORD': 'SenhaTeste!77' , 'HOST': 'localhost', 'PORT': '3306', }}
+## in django2/settings.py alter LANGUAGE_CODE = 'pt-br'
+## in django2/settings.py alter TIME_ZONE = 'America/Sao_Paulo'
+## in django2/settings.py add STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+## in django2/settings.py add import os
+
+## install MySQL Workbench or XAMPP
+service mysql start
+sudo mysql -p
+CREATE DATABASE django2;
+CREATE USER 'user'@'localhost' IDENTIFIED BY 'SenhaTeste!77';
+USE django2;
+GRANT ALL privileges ON django2.* TO 'user'@'localhost';
+
+## in core/views.py add functions: index, contato, produto
+## create new folder core/templates
+## create new files core/templates/index.html, core/templates/contato.html, core/templates/produto.html
+## create new folders core/static/css, core/static/js, core/static/images
+## in django2/urls.py alter from django.urls import path, include
+## in django2/urls.py alter urlpatterns = [ ..., path('', include('core.urls')),]
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
+
+## create new files core/forms.py
+## in core/forms.py add from django import forms
+## in core/forms.py add class ContatoForm(forms.Form)
+## in core/views.py add from .forms import ContatoForm
+## in core/views.py alter function contato
+
+## in django2/settings.py add EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+## in django2/settings.py add email settings
+## in core/forms.py add function send_email(self)
+## in core/views.py alter function contato
+
+## in core/models.py add from stdimage.models import StdImageField
+## in core/models.py add from django.db.models import signals
+## in core/models.py add from django.template.defaultfilters import slugify
+## in core/models.py add class Base(models.Model)
+## in core/models.py add class Produto(Base)
+## in core/models.py add function produto_pre_save(signal, instance, sender, **kwargs)
+python manage.py makemigrations
+python manage.py migrate
+## in core/admin.py add from .models import Produto
+## in core/admin.py add class ProdutoAdmin(admin.ModelAdmin)
+
+
+## in core/forms.py add from .models import Produto
+## in core/forms.py add class ProdutoModelForm(forms.ModelForm)
+## in core/views.py alter function produto(request)
+
+## in django2/settings.py add MEDIA_URL = 'media/'
+## in django2/settings.py add MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+## in django2/urls.py add from django.conf.urls.static import static
+## in django2/urls.py add from django.conf import settings
+## in django2/urls.py alter urlpatterns = [ ... ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+## in core/views.py alter function produto(request)
+
+## in core/views.py add from .models import Produto
+## in core/views.py alter function index(request)

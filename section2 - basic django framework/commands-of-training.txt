@@ -142,7 +142,7 @@ python manage.py collectstatic
 pip install whitenoise gunicorn
 ## in django1/settings.py, add
   MIDDLEWARE = [ 'django.middleware.security.SecurityMiddleware',
-                  whitenoise.middleware. WhiteNoiseMiddleware, ... ]
+                  'whitenoise.middleware.WhiteNoiseMiddleware', ... ]
 
 ## commit code in github
 ## create account and install Heroku
