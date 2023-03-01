@@ -48,6 +48,14 @@
     <li>
       <b>Section 3 - intermediate django framework:</b>
       <ul>
+        <li>Forms for submission via email;</li>
+        <li>Forms for recording in MySQL database;</li>
+        <li>Restriction of sections for unauthorized users.</li>
+      </ul>
+    </li>
+    <li>
+      <b>Section 4 - advanced django framework:</b>
+      <ul>
         <li></li>
       </ul>
     </li>
