@@ -37,11 +37,12 @@
     <li>
       <b>Section 2 - Basics Django framework:</b>
       <ul>
-        <li>Creation of virtual environment and installation of Django with standard SQLite3 database;</li>
+        <li>Creation of virtual environment and installation of Django with database;</li>
         <li>Standard Models, Templates, Routes and Views (MTV);</li>
         <li>Administrative area (admin);</li>
         <li>static files (CSS, JS);</li>
         <li>Django shell;</li>
+        <li>SQLite3 database.</li>
         <li>Heroku server.</li>
       </ul>
     </li>
@@ -49,14 +50,24 @@
       <b>Section 3 - intermediate django framework:</b>
       <ul>
         <li>Forms for submission via email;</li>
-        <li>Forms for recording in MySQL database;</li>
-        <li>Restriction of sections for unauthorized users.</li>
+        <li>Forms for recording in database;</li>
+        <li>Restriction of sections for unauthorized users;</li>
+        <li>MySQL database.</li>
       </ul>
     </li>
     <li>
       <b>Section 4 - advanced django framework:</b>
       <ul>
-        <li></li>
+        <li>Class based views;</li>
+        <li>Context manager;</li>
+        <li>Templates inheritance;</li>
+        <li>PostgreSQL database.</li>
+      </ul>
+    </li>
+    <li>
+      <b>Section 5 - testing your project:</b>
+      <ul>
+        <li>;</li>
       </ul>
     </li>
   </ul>
