@@ -101,6 +101,7 @@ distro==1.8.0
 dj-database-url==1.2.0
 dj-static==0.0.6
 Django==4.1.7
+django-adminlte2==0.4.3
 django-bootstrap4==22.3
 django-cpf==0.1.0
 django-input-mask==2.0.2

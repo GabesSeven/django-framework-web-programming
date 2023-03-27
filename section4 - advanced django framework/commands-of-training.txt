@@ -1,0 +1,69 @@
+pip install django psycopg2-binary gunicorn dj-static django-stdimage
+pip freeze > requirements.txt
+django-admin startproject fusion .
+django-admin startapp core
+
+## in core, create folders core/templates and core/static
+## in fusion/settings.py, change ALLOWED_HOSTS = [] to ALLOWED_HOSTS = ['*']
+## in fusion/settings.py, add in INSTALLED_APP[ ..., 'core', ]
+## in fusion/settings.py, add in TEMPLATES[ ..., DIRS:['templates'], ...]
+## in fusion/settings.py alter DATABASES = { 'default': { 'ENGINE': 'django.db.backends.postgresql', 'NAME': 'fusion', 'USER': 'usuario', 'PASSWORD': 'SenhaTeste' , 'HOST': 'localhost', 'PORT': '5432', }}
+## in fusion/settings.py alter LANGUAGE_CODE = 'pt-br'
+## in fusion/settings.py alter TIME_ZONE = 'America/Sao_Paulo'
+## in fusion/settings.py add import os
+## in fusion/settings.py add STATIC_URL = '/static/'
+## in fusion/settings.py add MEDIA_URL = 'media/'
+## in fusion/settings.py add STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+## in fusion/settings.py add MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+## in fusion/urls.py add from django.conf.urls.static import static
+## in fusion/urls.py alter from django.urls import path, include
+## in fusion/urls.py add from django.conf import settings
+## in fusion/urls.py alter urlpatterns = [ ..., path('', include('core.urls')), ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+## in core/urls.py add from django.urls import path
+## in core/urls.py add urlpatterns = []
+
+## install pgadmin4: https://www.pgadmin.org/download/pgadmin-4-apt/    https://www.youtube.com/watch?v=CCvn3Ru7Xjw
+curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg
+sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
+sudo nano /etc/apt/sources.list.d/pgadmin4.list
+ -> deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/bullseye pgadmin
+4 main
+sudo apt update
+sudo apt install postgresql postgresql-contrib pgadmin4 synaptic
+Synaptic Package Manager -> Search -> pgadmin4
+
+## initializing postgree https://horadecodar.com.br/2019/01/24/integrando-django-com-postegresql-windows-e-linux/   https://www.digitalocean.com/community/tutorials/como-instalar-e-utilizar-o-postgresql-no-ubuntu-16-04-pt
+
+
+sudo -i -u postgres
+psql
+create user usuario with password 'SenhaTeste';
+sudo -u postgres dropuser user -e
+sudo -u postgres createdb fusion
+\du+ #list of user
+\l+ # list of DB
+
+## in core/views.py add from django.views.generic import TemplateView
+## in core/views.py add class IndexView
+## in core/urls.py add from .views import IndexView
+## in core/urls.py alter urlpatterns = [path('', IndexView.as_view(), name='index'),]
+
+## in core/templates add index.html, base.html, hero.html, caracteristicas.html, chamada.html, contato.html, equipe.html, servicos.html, sobre.html, rodape.html, 404.html, 500.html
+
+## create core/forms.py
+## in core/views.py alter TemplateView to FormView
+## in core/views.py add imports and functions: form_valid, form_invalid
+## in fusion/settings.py add config for emails
+
+## run static files
+## in fusion/wsgi.py add from dj_static import Cling, MediaCling
+application = MediaCling(Cling(get_wsgi_application()))
+## pip install dj-database-url
+## pip freeze > requirements.txt
+
+## new interface for admin
+## pip install django-adminlte2
+## pip freeze > requirements.txt
+## in fusion/settings.py, add in INSTALLED_APP[ ..., 'core', 'django_adminlte', 'django_adminlte_theme', ]

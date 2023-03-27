@@ -4,4 +4,8 @@ __pycache__
 
 *.pyc
 
+.env
+
+section4 - advanced django framework/2-project-traning/pgadmin4/*
+
 .idea

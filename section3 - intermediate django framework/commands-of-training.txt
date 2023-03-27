@@ -9,7 +9,7 @@ django-admin startapp core
   MIDDLEWARE = [ 'django.middleware.security.SecurityMiddleware',
                   whitenoise.m*******iddleware.WhiteNoiseMiddleware, ... ]
 ## in django2/settings.py, add in TEMPLATES[ ..., DIRS:['templates'], ...]
-## in django2/settings.py alter DATABASES = { 'default': { 'ENGINE': 'django.db.backends.mysql', 'NAME': 'django2', 'USER': 'user', # 'PASSWORD': 'SenhaTeste!77' , 'HOST': 'localhost', 'PORT': '3306', }}
+## in django2/settings.py alter DATABASES = { 'default': { 'ENGINE': 'django.db.backends.mysql', 'NAME': 'django2', 'USER': 'user', 'PASSWORD': 'SenhaTeste!77' , 'HOST': 'localhost', 'PORT': '3306', }}
 ## in django2/settings.py alter LANGUAGE_CODE = 'pt-br'
 ## in django2/settings.py alter TIME_ZONE = 'America/Sao_Paulo'
 ## in django2/settings.py add STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -64,7 +64,7 @@ python manage.py migrate
 ## in django2/settings.py add MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 ## in django2/urls.py add from django.conf.urls.static import static
 ## in django2/urls.py add from django.conf import settings
-## in django2/urls.py alter urlpatterns = [ ... ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+## in django2/urls.py alter urlpatterns = [ ..., path('', include('core.urls')), ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ## in core/views.py alter function produto(request)
 
 ## in core/views.py add from .models import Produto
