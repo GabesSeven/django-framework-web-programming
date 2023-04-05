@@ -1,0 +1,35 @@
+## in core/tests.py add function: add_num
+## in core/tests.py add class: SimplesTestCase(TestCase)
+
+sudo -i -u postgres
+psql
+\du+ #list of user
+alter role usuario createdb;
+
+python manage.py tests
+
+## create folder core/tests
+## copy file core/tests.py to core/tests/tests_first.py
+## delete file core/tests.py
+## create file core/tests/__init__.py, core/tests/tests_models.py, core/tests/tests_views.py, core/tests/tests_forms.py
+
+pip install model_mommy coverage
+pip freeze > requirements.txt
+
+## create .coveragerc
+coverage run manage.py test ## error "coverage not found"
+
+python -m coverage run manage.py test
+python -m coverage report
+python -m coverage html
+cd htmlcov
+python -m http.server
+python -m http.server -d htmlcov/
+
+## create test case in core/tests/tests_models.py
+cd ..
+rm -rf htmlcov
+python -m coverage run manage.py test
+python -m coverage html
+cd htmlcov
+python -m http.server

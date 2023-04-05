@@ -59,11 +59,11 @@ sudo -u postgres createdb fusion
 
 ## run static files
 ## in fusion/wsgi.py add from dj_static import Cling, MediaCling
-application = MediaCling(Cling(get_wsgi_application()))
-## pip install dj-database-url
-## pip freeze > requirements.txt
+in fusion/wsgi.py add application = MediaCling(Cling(get_wsgi_application()))
+pip install dj-database-url
+pip freeze > requirements.txt
 
 ## new interface for admin
-## pip install django-adminlte2
-## pip freeze > requirements.txt
 ## in fusion/settings.py, add in INSTALLED_APP[ ..., 'core', 'django_adminlte', 'django_adminlte_theme', ]
+pip install django-adminlte2
+pip freeze > requirements.txt

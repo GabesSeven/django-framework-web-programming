@@ -6,6 +6,8 @@ __pycache__
 
 .env
 
-section4 - advanced django framework/2-project-traning/pgadmin4/*
+*/pgadmin4/*
 
 .idea
+
+htmlcov/*
