@@ -67,6 +67,15 @@
     <li>
       <b>Section 5 - testing your project:</b>
       <ul>
+        <li>Mommy model and Coverage libraries;</li>
+        <li>Model test;</li>
+        <li>Form test;</li>
+        <li>View test.</li>
+      </ul>
+    </li>
+    <li>
+      <b>Section 6 - dissecting the django user model:</b>
+      <ul>
         <li>;</li>
       </ul>
     </li>
