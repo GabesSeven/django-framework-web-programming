@@ -1,0 +1,19 @@
+django-admin startproject djangoum3 .
+django-admin startapp usuarios
+
+## set up djangoum3/setting.py
+## set up core/model.py
+## set up core/admin.py
+## create core/form.py
+
+
+## set up djangoum3/urls.py
+
+python manage.py shell
+>>> from django.urls import get_resolver
+>>> from pprint import pprint
+>>> help(pprint)
+>>> pprint(get_resolver().url_patterns[0].url_patterns)
+
+## create template/base.html, template/index.html, template/registration/login.html
+## set up djangoum3/setting.py

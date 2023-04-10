@@ -1,0 +1,7 @@
+django-admin startproject djangoum2 .
+django-admin startapp core
+
+## set up djangoum2/setting.py
+## set up core/model.py
+## set up core/admin.py
+## set up djangoum2/urls.py

@@ -1,0 +1,39 @@
+django-admin startproject djangoum1 .
+python manage.py migrate
+
+python manage.py shell
+>>> from django.contrib.auth.models import User
+>>> dir(User)
+>>> from django.contrib.auth.models import UserManager
+>>> dir(UserManager)
+>>> help(UserManager)
+>>> help(UserManager.create)
+>>> help(UserManager.create_user)
+>>> help(UserManager.create_superuser)
+>>> usuario = User.object.create_user(username='teste', password='123456', email='teste@gmail.com')
+>>> usuario
+>>> usuario.save()
+>>> ret = User.object.all()
+>>> ret
+>>> ret[0].username
+>>> ret[0].password
+
+>>> user = User.objects.get(pk=1)
+>>> user
+>>> user.first_name = 'Teste'
+>>> user.last_name = 'da Silva'
+>>> user.save()
+>>> ret2 = User.objects.get(id=1)
+>>> ret2
+>>> ret2.first_name
+>>> ret2.last_name
+
+>>> felicity = User.objects.create_user(username='felicity', password='123456', email='felicity@gmail.com', first_name='Felicity', last_name='Jones')
+>>> felicity.save()
+>>> fefe = User.objects.get(pk=2)
+>>> fefe.first_name
+
+>>> angelina = User.objects.create_user(username='angelina', password='123456', email='angelina@gmail.com', is_staff=True)
+>>> angelina.save()
+>>> adm = User.objects.create_user(username='darth', password='123456', email='darth@darkstar.com', is_staff=True, is_superuser=True)
+>>> adm.save()
