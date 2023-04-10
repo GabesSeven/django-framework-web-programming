@@ -76,10 +76,10 @@
     <li>
       <b>Section 6 - dissecting the django user model:</b>
       <ul>
-        <li>custom admin screen overriding admin.py functions;</li>
-        <li>admin and common user;</li>
-        <li>restrictions on access, modification and visualization of data for different users;</li>
-        <li>custom login page.</li>
+        <li>Custom admin screen overriding admin.py functions;</li>
+        <li>Admin and common user;</li>
+        <li>Restrictions on access, modification and visualization of data for different users;</li>
+        <li>Custom login page.</li>
       </ul>
     </li>
     <li>
