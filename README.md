@@ -78,8 +78,7 @@
       <ul>
         <li>custom admin screen overriding admin.py functions;</li>
         <li>admin and common user;</li>
-        <li>restrictions on access, modification and visualization of data for different users
-;</li>
+        <li>restrictions on access, modification and visualization of data for different users;</li>
         <li>custom login page.</li>
       </ul>
     </li>
