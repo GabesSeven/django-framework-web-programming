@@ -92,6 +92,16 @@
     <li>
       <b>Section 8 - relationship between models:</b>
       <ul>
+        <li>One-to-One Relationship (OneToOneField);</li>
+        <li>One-to-many relationship (ForeignKey);</li>
+        <li>Many-to-Many Relationship (ManyToManyField);</li>
+        <li>Deleting strong entities and weak entities in cascade;</li>
+        <li>Deleting strong entities and replacing weak entities with default data or other strong entities.</li>
+      </ul>
+    </li>
+    <li>
+      <b>Section 9 - working with realtime applications in your django projects:</b>
+      <ul>
         <li>;</li>
       </ul>
     </li>

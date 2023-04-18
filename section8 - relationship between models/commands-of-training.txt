@@ -1,0 +1,81 @@
+django-admin startproject djangoorm .
+django-admin startapp core
+
+## set up djangoorm/settings.py
+## add code core/models.py
+## add code core/admin.py
+
+python manage.py shell
+>>> from core.models import Carro
+>>> carros = Carro.objects.all()
+>>> type(carros)
+>>> dir(carros)
+>>> print(carros.query)
+
+>>> carro = Carro.objects.get(pk=1)
+>>> type(carro)
+>>> chassi = carro.chassi
+>>> chassi.numero
+
+>>> from core.models import Chassi 
+>>> chassi = Chassi.objects.get(id=2)
+>>> dir(chassi)
+>>> chassi.carro
+>>> chassi.carro.modelo
+
+rm db.sqlite3
+rm core/migrations/00* 
+python manage.py makemigration
+python manage.py migrate
+python manage.py createsuperuser
+
+python manage.py shell
+>>> from core.models import Carro
+>>> carros = Carro.objects.all()
+>>> carros
+>>> print(carros.query)
+
+>>> uno = Carro.objects.get(pk=1)
+>>> uno
+>>> uno = Carro.objects.filter(modelo='Uno Way')
+>>> uno
+>>> print(uno.query)
+>>> uno = Carro.objects.filter(modelo='Uno Way').first()
+>>> uno
+>>> uno = Carro.objects.filter(modelo='Uno Way').last()
+>>> uno
+>>> fiat = uno.montadora
+>>> fiat
+
+>>> from core.models import Montadora
+>>> fiat = Montadora.objects.get(pk=1)
+>>> fiat
+>>> carros = fiat.carro_set.all()
+>>> carros
+>>> print(carros.query)
+>>> carros.first()
+>>> carros.last()
+
+>>> from core.models import Carro
+>>> carros = Carro.objects.all()
+>>> carros
+>>> carro1 = carros.first()
+>>> carro1
+>>> motos = carro1.motoristas.all()
+>>> motos
+>>> carro2 = carros.last()
+>>> carro2
+>>> motos2 = carro2.motoristas.all()
+>>> motos2
+>>> print(motos2.query)
+
+>>> m1 = motos1.first() 
+>>> m1 
+>>> carros = Carro.objects.filter(motoristas=m1)
+>>> carros
+>>> print(carros.query)
+>>> motos1
+>>> carros = Carro.objects.filter(motoristas__in=motos1)
+>>> carros
+>>> carros = Carro.objects.filter(motoristas__in=motos1).distinct()
+>>> carros

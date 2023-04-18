@@ -1,43 +1,62 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 # Create your models here.
 class Chassi(models.Model):
-    numero = models.CharField('Chassi', max_length=16, help_text='Máximo 16 caracteres')
+	numero = models.CharField('Chassi', max_length=16, help_text='Máximo 16 caracteres')
 
-    class Meta:
-        verbose_name = 'Chassi'
-        verbose_name_plural = 'Chassis'
+	class Meta:
+		verbose_name = 'Chassi'
+		verbose_name_plural = 'Chassis'
 
-    def __str__(self):
-        return self.numero
+	def __str__(self):
+		return self.numero
 
 class Montadora(models.Model):
-    """OneToOneField
-     - cada carro só pode ter um montadora
-     - cada montadora pode ter muitos carros
-    """
-    nome = models.CharField('Nome', max_length=50, help_text='Máximo 50 caracteres')
+	nome = models.CharField('Nome', max_length=50)
 
-    class Meta():
-        verbose_name = 'Montadora'
-        verbose_name_plural = 'Montadoras'
+	class Meta:
+		verbose_name = 'Montadora'
+		verbose_name_plural = 'Montadoras'
 
-    def __str__(self):
-        return self.nome
+	def __str__(self):
+		return self.nome
+
+
+# retorna uma tupla: (Object, Boolean)
+# Boolean: True se Object NÃO existe; False se Object já existe
+def set_default_montadora():
+	return Montadora.objects.get_or_create(nome='Padrão')[0] 
 
 class Carro(models.Model):
-    """ForeignKey (One to Many)
-     - cada carro só pode ter um chassi
-     - cada chassi só pode ter um carro
-    """
-    chassi  = models.OneToOneField(Chassi, on_delete=models.CASCADE)
-    mont  = models.ForeignKey('Montadora', on_delete=models.CASCADE)
-    modelo  = models.CharField('Modelo', max_length=30, help_text='Máximo 30 caracteres')
-    preco  = models.DecimalField('Preco', max_length=8, max_digits=2, decimal_places=2)
+	"""
+	OneToOneField:
+	 - Carro possui um Chassi
+	 - Chassi possui um Carro
+	"""
+	"""
+	ForeignKey:
+	 - Carro possui uma Montadora
+	 - Montadora possui vários Carros
+	"""
+	"""
+	ManyToManyField:
+	 - Motoristas possui vários Carros
+	 - Carros possui vários Motoristas 
+	"""
+	chassi = models.OneToOneField(Chassi, on_delete=models.CASCADE)
+	montadora = models.ForeignKey(Montadora, on_delete=models.CASCADE)
+	# se Montadora atual for excluída, seta para os referenciados a Montadora com pk=1
+	# montadora = models.ForeignKey(Montadora, on_delete=models.SET_DEFAULT, default=1)
+	# se Montadora atual for excluída, seta para os referenciados a Montadora "Padrão"
+	# montadora = models.ForeignKey(Montadora, on_delete=models.SET(set_default_montadora))
+	motoristas = models.ManyToManyField(get_user_model())
+	modelo = models.CharField('Modelo', max_length=30, help_text='Máximo 30 caracteres')
+	preco = models.DecimalField('Preco', max_digits=8, decimal_places=2)
 
-    class Meta():
-        verbose_name = 'Carro'
-        verbose_name_plural = 'Carros'
+	class Meta:
+		verbose_name = 'Carro'
+		verbose_name_plural = 'Carros'
 
-    def __str__(self):
-        return f'{self.montadora} {self.modelo}'
+	def __str__(self):
+		return f'{self.montadora} {self.modelo}'
