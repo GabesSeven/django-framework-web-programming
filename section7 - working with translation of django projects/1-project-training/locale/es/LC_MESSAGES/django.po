@@ -1,0 +1,202 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-18 08:59-0300\n"
+"PO-Revision-Date: 2023-04-18 09:00-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: core/forms.py:6 core/forms.py:17 core/models.py:52
+msgid "Nome"
+msgstr "Nombre"
+
+#: core/forms.py:7 core/forms.py:18
+msgid "E-mail"
+msgstr "Correo electrónico"
+
+#: core/forms.py:8 core/forms.py:19
+msgid "Assunto"
+msgstr "Asunto"
+
+#: core/forms.py:9 core/forms.py:20
+msgid "Mensagem"
+msgstr "Mensaje"
+
+#: core/models.py:14
+msgid "Criação"
+msgstr "Creación"
+
+#: core/models.py:15
+msgid "Atualização"
+msgstr "Actualización"
+
+#: core/models.py:16
+msgid "Ativo?"
+msgstr "¿Activo?"
+
+#: core/models.py:23 core/models.py:69
+msgid "Engrenagem"
+msgstr "Engranaje"
+
+#: core/models.py:24
+msgid "Gráfico"
+msgstr "Gráfico"
+
+#: core/models.py:25
+msgid "Usuário"
+msgstr "Usuario"
+
+#: core/models.py:26
+msgid "Design"
+msgstr "Diseño"
+
+#: core/models.py:27
+msgid "Mobile"
+msgstr "Móvil"
+
+#: core/models.py:28 core/models.py:73
+msgid "Foguete"
+msgstr "Cohete"
+
+#: core/models.py:30 core/models.py:35 core/models.py:75
+msgid "Serviço"
+msgstr "Servicio"
+
+#: core/models.py:31 core/models.py:76
+msgid "Descrição"
+msgstr "Descripción"
+
+#: core/models.py:32 core/models.py:77
+msgid "Icone"
+msgstr "Icono"
+
+#: core/models.py:36 core/templates/base.html:49
+msgid "Serviços"
+msgstr "Servicios"
+
+#: core/models.py:42 core/models.py:45 core/models.py:53
+msgid "Cargo"
+msgstr "Carga"
+
+#: core/models.py:46
+msgid "Cargos"
+msgstr "Cargos"
+
+#: core/models.py:54
+msgid "Bio"
+msgstr "Bio"
+
+#: core/models.py:55
+msgid "Imagem"
+msgstr "Imagén"
+
+#: core/models.py:61
+msgid "Funcionário"
+msgstr "Empleado"
+
+#: core/models.py:62
+msgid "Funcionários"
+msgstr "Empleados"
+
+#: core/models.py:70
+msgid "Dispositivos"
+msgstr "Dispositivos"
+
+#: core/models.py:71
+msgid "Folha"
+msgstr "Hoja"
+
+#: core/models.py:72
+msgid "Camadas"
+msgstr "Capas"
+
+#: core/models.py:80
+msgid "Característica"
+msgstr "Característica"
+
+#: core/models.py:81
+msgid "Características"
+msgstr "Características"
+
+#: core/templates/404.html:11
+msgid "Página não encontrada"
+msgstr "Página no encontrada"
+
+#: core/templates/404.html:12
+msgid "infelizmente a página que você procura não está disponível"
+msgstr "lamentablemente la página que busca no está disponible"
+
+#: core/templates/404.html:14 core/templates/500.html:14
+msgid "Volte para a página principal"
+msgstr "Vuelve a la página principal"
+
+#: core/templates/500.html:11
+msgid "Erro de processamento"
+msgstr "Error al enviar correo electrónico"
+
+#: core/templates/500.html:12
+msgid "infelizmente não foi possível processar a requisição"
+msgstr "lamentablemente no se ha podido procesar la solicitud"
+
+#: core/templates/base.html:44
+msgid "Início"
+msgstr "Inicio"
+
+#: core/templates/base.html:54
+msgid "Equipe"
+msgstr "Equipo"
+
+#: core/templates/base.html:59
+msgid "Preço"
+msgstr "Precio"
+
+#: core/templates/base.html:64
+msgid "Clientes"
+msgstr "Clientes"
+
+#: core/templates/base.html:69
+msgid "Contato"
+msgstr "Contacto"
+
+#: core/templates/hero.html:8
+msgid "Com a Fusion"
+msgstr "Con fusión"
+
+#: core/templates/hero.html:8
+msgid "sua empresa irá mais longe"
+msgstr "su empresa llegará más lejos"
+
+#: core/templates/hero.html:9
+msgid "Você irá mais longe. Nós não estudamos na Geek para ganhar pouco dinheiro!"
+msgstr "Llegarás más lejos. ¡En Geek no estudiamos para ganar poco dinero!"
+
+#: core/templates/hero.html:11
+msgid "Saiba mais"
+msgstr "Sepa mas"
+
+#: core/templates/hero.html:12
+msgid "Entre em contato"
+msgstr "Entre en contacto"
+
+#: core/views.py:32
+msgid "E-mail enviado com sucesso."
+msgstr "Correo electrónico enviado con éxito."
+
+#: core/views.py:36
+msgid "Erro ao enviar e-mail."
+msgstr "Error al enviar correo electrónico."
+
+#~ msgid "Nós da Fusion fazemos mais por você."
+#~ msgstr "En Fusion hacemos más por ti."
