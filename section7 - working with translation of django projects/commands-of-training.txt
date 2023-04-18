@@ -1,0 +1,45 @@
+pip install textblob
+
+python
+>>> from textblob import TextBlob
+>>> texto = TextBlob("Evolua seu lado geek!")
+>>> texto.translate(to='es')
+>>> texto.translate(to='en')
+>>> texto.translate(to='fr')
+>>> texto.translate(to='ru')
+>>> texto.translate(to='zh-CN')
+>>> texto.translate(to='ar')
+>>> print(texto.translate(to='ar'))
+
+https://linux.how2shout.com/how-to-install-brew-ubuntu-20-04-lts-linux/
+sudo apt update
+sudo apt-get install build-essential
+sudo apt install git -y
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+(echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/h2s/.bashrc
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+brew
+brew upgrade
+brew install gettext
+brew link gettext --force
+
+sudo apt install gettext
+install poedit with Ubuntu Softwares
+
+
+## in fusion/settings.py, add LOCALE_PATHS
+## in fusion/settings.py, add MIDDLEWARE = [ ..., 'django.middleware.locale.LocaleMiddleware', ...]
+## alter code in core/views.py: from django.utils.translation import gettext as _
+## alter code in core/views.py: from django.utils import translation
+## in core/templates/base.html alter lang="pt-bt" to lang="{{ lang }}"
+## alter code in core/forms.py: from django.utils.translation import gettext_lazy as _
+## alter code in core/models.py: from django.utils.translation import gettext_lazy as _
+
+python manage.py makemessages -l es
+## load up 'locale/es/LC_MESSAGES/django.po' in poedit
+python manage.py compilemessages
+
+## in core/templates/404.html, add {% load i18n %} and {% trans '...' %}
+python manage.py makemessages -l es
+python manage.py compilemessages
