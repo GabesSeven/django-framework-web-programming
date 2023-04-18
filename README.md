@@ -86,7 +86,7 @@
       <b>Section 7 - working with translation of django projects:</b>
       <ul>
         <li>Installation and configuration of gettext and gettext_lazy;</li>
-        <li>Translation using gettext, gettext_lazy and poedit;</li>
+        <li>Translation using gettext, gettext_lazy and poedit.</li>
       </ul>
     </li>
     <li>
